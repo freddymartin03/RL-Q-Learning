@@ -26,6 +26,7 @@ the expected reward through taking the best action, given the agent is in a cert
 As highlighted below it is clear to see that the optimal policy is one in which the agent
 takes the shortest path from the start cell (the cell in the bottom left) to the terminal end
 cell.
+
 <img width="212" alt="Policy" src="https://github.com/freddymartin03/RL-UROP/assets/139906764/f3a36cf2-c6cb-4658-9f3d-91e3427c5bf5">
 
 
