@@ -14,10 +14,22 @@ The image below shows the reward structure for the grid-world environment.
 
 <img width="211" alt="Rewards" src="https://github.com/freddymartin03/RL-UROP/assets/139906764/842266af-482b-4bc4-bf63-673a686d1024">
 
-By updating the rewards table using the Q-learning algorithm, the agent can learn from its
+By updating the rewards table using the Q-learning algorithm (pseudo code below), the agent can learn from its
 experiences and improve its performance over successive iterations. Hence, over time, this
 allows the agent to differentiate between ’good’ (ones which maximise reward) and ’bad’
 (ones which minimise reward) actions in different states, leading to optimal policy learning.
+
+<pre>
+Initialize Q(s, a), for all s ∈ S^+, a ∈ A(s), arbitrarily except that Q(terminal, ·) = 0
+Loop for each episode:
+  Initialize St
+  Loop for each step of the episode:   
+    Choose At from St using a policy derived from Q (e.g., ε-greedy)
+    Take action At, observe Rt+1, St+1
+    Q(St, At) ← Q(St, At) + α[Rt+1 + γ maxa Q(St+1, a) − Q(St, At)]
+    St ← St+1
+  until St is terminal
+</pre>
 
 In carrying out the Q-learning algorithm the action-value function, Q, eventually reached
 convergence to the optimal action-value function q∗. Hence an optimal policy was developed,
