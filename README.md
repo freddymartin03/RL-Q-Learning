@@ -41,7 +41,18 @@ cell.
 
 <img width="212" alt="Policy" src="https://github.com/freddymartin03/RL-UROP/assets/139906764/f3a36cf2-c6cb-4658-9f3d-91e3427c5bf5">
 
-## Q-learning (off policy TD control) in a grid-world environment
+During the learning process, the agent explores the environment by taking actions according to an exploration policy. This allows the agent to discover different state-action pairs.After taking an action and observing the resulting state and reward, the agent updates the Q-value for the current state-action pair using the Q-learning update rule. The figure below shows the TD against the number of episodes. It is interesting to note that the TD appears to settle fastest initially for a lower epsilon value. This can be explained through the fact that the agent chooses to exploit rather than explore, thus few states are encountered. As the number of episodes increases the agent discovers a large reward causing a large update in the TD value, hence the spikes are observed in the figure below. In contrast, a high epsilon value settles faster as the state space is explored rather than exploited thus the TD settles quickly, as all states have been encountered.  
+
+<img width="881" alt="TD_graph" src="https://github.com/freddymartin03/Reinforcement-learning-UROP/assets/139906764/3c5a875f-af50-47ec-aac9-25ce3f9b38b8">
+
+## Q-learning (off policy TD control) Water Tank
 To further experiment with Q-learning, I applied the algorithm to a water tank problem. The premise of the problem revolves around a water tank (see below) where Q-learning is used to control the height of water in the tank where the outflow is subject to randomness. In establishing this problem, the tank dynamics are modelled and solved using the SciPy odeint solver. The action that the agent can take is adding water to the tank in order to keep the level at 10m, it is worth noting that the agent can only add water, it is not able to take water out of the tank.  
 
-Through applying the Q-learning algorithm discussed earlier a policy can be developed by the agent, in order to achieve, and subsequently maintain the tank level at 10m. A graph is provided below which illustrates the policy developed through averaging multiple runs. This approach was taken due to the stochastic nature of the problem in which the agent can experience an abnormally large outflow and hence require a large update of the Q function to develop an optimal policy. 
+<img width="400" alt="Tank" src="https://github.com/freddymartin03/Reinforcement-learning-UROP/assets/139906764/79609f11-f201-49dd-85a9-0f8fdcc4642f">
+
+
+Through applying the Q-learning algorithm discussed earlier a policy can be developed by the agent, in order to achieve, and subsequently maintain the tank level at 10m (ie a state of 10). A graph is provided below which illustrates the policy developed through averaging multiple runs. This approach was taken due to the stochastic nature of the problem in which the agent can experience an abnormally large outflow and hence require a large update of the Q function to develop an optimal policy. The figure below illustrates an averaged policy in which the agent aims to keep the water level at 10m. It is intresting to note that the agent takes actions less than 1.5m^3s^(-1) to reduce the magnitude of the negative reward. 
+
+
+<img width="712" alt="Q_average_e0 99_n50000_error" src="https://github.com/freddymartin03/Reinforcement-learning-UROP/assets/139906764/a7c611e4-34de-4788-8978-35893a43d7ec">
+
