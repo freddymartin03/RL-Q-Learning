@@ -56,3 +56,5 @@ Through applying the Q-learning algorithm discussed earlier a policy can be deve
 
 <img width="712" alt="Q_average_e0 99_n50000_error" src="https://github.com/freddymartin03/Reinforcement-learning-UROP/assets/139906764/a7c611e4-34de-4788-8978-35893a43d7ec">
 
+It is interesting to observe the confidence interval in the figure above. When the agent observes the stochastic nature of the outflow it becomes harder to differentiate between genuinely effective actions and those that only appear effective due to random fluctuations. This can lead to the agent making incorrect value estimations and policy decisions.
+
