@@ -1,7 +1,7 @@
 # Reinforcement learning  
 This repository is to keep track of my work for my Undergraduate Research Opportunity Program (UROP). The code draws upon methods dicussed in 
 the book 'Reinforcement Learning: An Introduction' 
-by Andrew Barto and Richard S. Sutton. 
+by Andrew Barto and Richard S. Sutton. [1] 
 
 ## Q-learning (off policy TD control) in a grid-world environment
 Q-learning is a powerful off-policy temporal-difference (TD) control algorithm which can be used to outline the optimal action based on the current state of the agent.
@@ -15,7 +15,7 @@ The image below shows the reward structure for the grid-world environment.
 <img width="211" alt="Rewards" src="https://github.com/freddymartin03/RL-UROP/assets/139906764/842266af-482b-4bc4-bf63-673a686d1024">
 
 By updating the rewards table using the Q-learning algorithm (pseudo code below), the agent can learn from its
-experiences and improve its performance over successive iterations. Hence, over time, this
+experiences and improve its performance over successive iterations [1]. Hence, over time, this
 allows the agent to differentiate between ’good’ (ones which maximise reward) and ’bad’
 (ones which minimise reward) actions in different states, leading to optimal policy learning.
 
@@ -59,7 +59,7 @@ Through applying the Q-learning algorithm discussed earlier a policy can be deve
 It is interesting to observe the confidence interval in the figure above. When the agent observes the stochastic nature of the outflow it becomes harder to differentiate between genuinely effective actions and those that only appear effective due to random fluctuations. This can lead to the agent making incorrect value estimations and policy decisions.
 
 ## Off-policy Monte Carlo Control
-Monte Carlo learning is a powerful technique in the field of reinforcement learning that enables agents to learn optimal strategies through experience and exploration. This approach hinges on the idea of estimating the value of states or state-action pairs by averaging the cumulative rewards obtained from multiple simulated episodes. By collecting and analysing data from the interactions between an agent and an environment, Monte Carlo methods offer a practical solution to decision-making problems across various domains. Through simulating and analysing numerous random trajectories to estimate values, policies, and rewards, Monte Carlo enables the design of effective control policies that adapt to real-world scenarios. The algorithm discussed in the Andrew Barto and Richard S. Sutton book: 'Reinforcement Learning: An Introduction' is shown below. 
+Monte Carlo learning is a powerful technique in the field of reinforcement learning that enables agents to learn optimal strategies through experience and exploration. This approach hinges on the idea of estimating the value of states or state-action pairs by averaging the cumulative rewards obtained from multiple simulated episodes. By collecting and analysing data from the interactions between an agent and an environment, Monte Carlo methods offer a practical solution to decision-making problems across various domains. Through simulating and analysing numerous random trajectories to estimate values, policies, and rewards, Monte Carlo enables the design of effective control policies that adapt to real-world scenarios. The algorithm discussed in the Andrew Barto and Richard S. Sutton book: 'Reinforcement Learning: An Introduction' is shown below [1]. 
 
 <pre>
 Input: an arbitrary target policy π
@@ -81,3 +81,6 @@ Loop forever (for each episode):
 In the context of the water tank problem, Monte Carlo learning provides a framework to address the challenge of controlling the water level in a tank subject to uncertain outflows. By modelling the system dynamics and simulating episodes, the agent can iteratively learn and refine policies that minimise water level deviations and optimise control actions. By repeatedly sampling and learning from these trajectories, Monte Carlo learning can provide insights into how to make informed decisions to achieve the desired control objective of maintaining the water tank height at 10m, while considering uncertainties.
 
 
+[1] Sutton, R.S. and Barto, A. (2018). Reinforcement learning : an introduction. Cambridge, Ma ; Lodon: The Mit Press.
+
+‌
