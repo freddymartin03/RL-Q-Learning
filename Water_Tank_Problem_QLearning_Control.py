@@ -16,16 +16,16 @@ class WaterTank:
         self.k = 1/10
 
     def dhdt(self, h, t, v_in, v_out_uncertainty):
-
-        ''' Differential equation describing the water level change '''
-
+        ''' 
+        Differential equation describing the water level change 
+        '''
         v_out = h * self.k + v_out_uncertainty
         return 1/self.area * (v_in - v_out)
 
     def ode_solver(self, h0, v_in, t):
-
-        ''' Solver for the differential equation '''
-
+        ''' 
+        Solver for the differential equation
+        '''
         t = np.linspace(t, t+1, 2)
         v_out_uncertainty = np.random.normal(0, 0.5, 1)  # random outflow
         h_array = odeint(self.dhdt, h0, t, args=(v_in, v_out_uncertainty[0]))
@@ -37,17 +37,17 @@ class WaterTank:
         return h
 
     def episode_end(self, t):
-
-        ''' Allows the agent to control the water level for 10 time-steps '''
-        ''' After that the episode is over '''
-
+        ''' 
+        Allows the agent to control the water level for 10 time-steps 
+        After that the episode is over
+        '''
         if t >= 10:
             return True
 
     def reward_gen(self, action, next_state):
-
-        ''' Reward function '''
-
+        ''' 
+        Reward function 
+        '''
         if action > 1.5:  # penalize larger change in control action
             reward = - (10 - next_state) ** 2 - 6 * action ** 2
         else:
@@ -70,10 +70,10 @@ class QLearningAgent(WaterTank):
         self.q_table = q_table
 
     def get_next_state(self, state, action, t):
-
-        ''' Get the next state based on current state and action '''
-        ''' Use of ODE solver to generate next state '''
-
+        ''' 
+        Get the next state based on current state and action
+        Use of ODE solver to generate next state 
+        '''
         max_state = np.max(self.all_states)
         min_state = np.min(self.all_states)
         next_state = self.water_tank.ode_solver(state, action, t)
@@ -89,9 +89,9 @@ class QLearningAgent(WaterTank):
         return next_state
 
     def next_action(self, state, epsilon):
-
-        ''' Select the next action based on epsilon-greedy policy '''
-
+        ''' 
+        Select the next action based on epsilon-greedy policy 
+        '''
         if np.random.random() < epsilon:
             action = random.choice(self.all_actions.tolist())
         else:
@@ -104,10 +104,10 @@ class QLearningAgent(WaterTank):
         return action
 
     def key_and_value(self, input_dict, target_key):
-
-        ''' Find key and value in a dictionary '''
-        ''' Allows for index of state action pair '''
-
+        ''' 
+        Find key and value in a dictionary 
+        Allows for index of state action pair 
+        '''
         for key, value in input_dict.items():
             if key == target_key:
                 return key, value
@@ -146,9 +146,9 @@ class QLearningAgent(WaterTank):
 
     #### Plotting functions ####
     def plot_state_vs_best_action(self):
-
-        ''' Plots to visualise the best action for a given state '''
-
+        ''' 
+        Plots to visualise the best action for a given state 
+        '''
         best_actions = []
         for state in self.all_states:
             state_index = self.all_states_dict[state]
