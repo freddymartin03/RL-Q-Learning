@@ -22,13 +22,13 @@ allows the agent to differentiate between ’good’ (ones which maximise reward
 <pre>
 Initialize Q(s, a), for all s ∈ S^+, a ∈ A(s), arbitrarily except that Q(terminal, ·) = 0
 Loop for each episode:
-  Initialize St
-  Loop for each step of the episode:   
-    Choose At from St using a policy derived from Q (e.g., ε-greedy)
-    Take action At, observe Rt+1, St+1
-    Q(St, At) ← Q(St, At) + α[Rt+1 + γ maxa Q(St+1, a) − Q(St, At)]
-    St ← St+1
-  until St is terminal
+    Initialize St
+    Loop for each step of the episode:   
+      Choose At from St using a policy derived from Q (e.g., ε-greedy)
+      Take action At, observe Rt+1, St+1
+      Q(St, At) ← Q(St, At) + α[Rt+1 + γ maxa Q(St+1, a) − Q(St, At)]
+      St ← St+1
+    until St is terminal
 </pre>
 
 In carrying out the Q-learning algorithm the action-value function, Q, eventually reached
@@ -57,4 +57,27 @@ Through applying the Q-learning algorithm discussed earlier a policy can be deve
 <img width="712" alt="Q_average_e0 99_n50000_error" src="https://github.com/freddymartin03/Reinforcement-learning-UROP/assets/139906764/a7c611e4-34de-4788-8978-35893a43d7ec">
 
 It is interesting to observe the confidence interval in the figure above. When the agent observes the stochastic nature of the outflow it becomes harder to differentiate between genuinely effective actions and those that only appear effective due to random fluctuations. This can lead to the agent making incorrect value estimations and policy decisions.
+
+## Off-policy Monte Carlo Control
+Monte Carlo learning is a powerful technique in the field of reinforcement learning that enables agents to learn optimal strategies through experience and exploration. This approach hinges on the idea of estimating the value of states or state-action pairs by averaging the cumulative rewards obtained from multiple simulated episodes. By collecting and analysing data from the interactions between an agent and an environment, Monte Carlo methods offer a practical solution to decision-making problems across various domains. Through simulating and analysing numerous random trajectories to estimate values, policies, and rewards, Monte Carlo enables the design of effective control policies that adapt to real-world scenarios. The algorithm discussed in the Andrew Barto and Richard S. Sutton book: 'Reinforcement Learning: An Introduction' is shown below. 
+
+<pre>
+Input: an arbitrary target policy π
+Initialise, for all s ∈ S, a ∈ A(s):
+	Q(s, a) ∈ R (arbitrarily)
+	C(s, a) ← 0
+Loop forever (for each episode):
+	b ← any policy with coverage π
+	Generate an episode following b: S_0,A_0,R_1,…  ,S_(T-1),A_(T-1),R_T  
+	G ← 0
+	W ← 1
+	Loop for each step of episode, t=T-1,T-2,…  ,0 while W≠0:
+                G ← γG + R_(t+1)
+		C(S_t,A_t) ←  C(S_t,A_t)+W
+		Q(S_t,A_t) ← Q(S_t,A_t)+  W/(C(S_t,A_t)) [G- Q(S_t,A_t)]
+		W ← W (π(A_t|S_t))/(b(A_t|S_t))  
+</pre>
+
+In the context of the water tank problem, Monte Carlo learning provides a framework to address the challenge of controlling the water level in a tank subject to uncertain outflows. By modelling the system dynamics and simulating episodes, the agent can iteratively learn and refine policies that minimise water level deviations and optimise control actions. By repeatedly sampling and learning from these trajectories, Monte Carlo learning can provide insights into how to make informed decisions to achieve the desired control objective of maintaining the water tank height at 10m, while considering uncertainties.
+
 
