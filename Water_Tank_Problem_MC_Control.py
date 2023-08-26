@@ -217,8 +217,8 @@ class MonteCarloAgent(WaterTank):
 water_tank = WaterTank()
 
 num_episodes = 10000
-h0 = 7  # round(random.uniform(7, 13), 1)   initial height in tank
-v0 = 0  # np.random.normal(0, 0.5, 1)   initial outflow
+h0 = 7  # initial height in tank
+v0 = 0  # initial outflow
 EPSILON = 0.99  # exploration rate
 GAMMA = 1  # discount factor
 ALPHA = 0.5  # learning rate
