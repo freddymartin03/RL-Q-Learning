@@ -58,6 +58,12 @@ Through applying the Q-learning algorithm discussed earlier a policy can be deve
 
 It is interesting to observe the confidence interval in the figure above. When the agent observes the stochastic nature of the outflow it becomes harder to differentiate between genuinely effective actions and those that only appear effective due to random fluctuations. This can lead to the agent making incorrect value estimations and policy decisions.
 
+We can visualise the total reward that the agent experiences against the number of episodes, as shown below. It is interesting to note that as the agent continues to explore and exploit, it refines its policies and actions. Over time, it converges towards optimal or near-optimal policies, which results in a trend of increasing rewards. 
+
+<img width="723" alt="Q_Reward_100episodes" src="https://github.com/freddymartin03/Reinforcement-learning-UROP/assets/139906764/a203f3f0-4f5b-4932-af69-03b330fab965">
+
+
+
 ## Off-policy Monte Carlo Control
 Monte Carlo learning is a powerful technique in the field of reinforcement learning that enables agents to learn optimal strategies through experience and exploration. This approach hinges on the idea of estimating the value of states or state-action pairs by averaging the cumulative rewards obtained from multiple simulated episodes. By collecting and analysing data from the interactions between an agent and an environment, Monte Carlo methods offer a practical solution to decision-making problems across various domains. Through simulating and analysing numerous random trajectories to estimate values, policies, and rewards, Monte Carlo enables the design of effective control policies that adapt to real-world scenarios. The algorithm discussed in the Andrew Barto and Richard S. Sutton book: 'Reinforcement Learning: An Introduction' is shown below [1]. 
 
@@ -79,6 +85,8 @@ Loop forever (for each episode):
 </pre>
 
 In the context of the water tank problem, Monte Carlo learning provides a framework to address the challenge of controlling the water level in a tank subject to uncertain outflows. By modelling the system dynamics and simulating episodes, the agent can iteratively learn and refine policies that minimise water level deviations and optimise control actions. By repeatedly sampling and learning from these trajectories, Monte Carlo learning can provide insights into how to make informed decisions to achieve the desired control objective of maintaining the water tank height at 10m, while considering uncertainties.
+
+
 
 
 [1] Sutton, R.S. and Barto, A. (2018). Reinforcement learning : an introduction. Cambridge, Ma ; Lodon: The Mit Press.
