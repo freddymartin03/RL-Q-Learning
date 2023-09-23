@@ -91,7 +91,7 @@ As such a policy was developed through the use of Monte Carlo learning as highli
 <img width="712" alt="Best_action_mc_e0 2_runs10_n10000" src="https://github.com/freddymartin03/Reinforcement-learning-UROP/assets/139906764/30669796-23df-4989-a22e-6d80127ed3b3">
 
 ## Future Work
-As part of this urop
+As part of this UROP I started looking at Policy Gradient methods. Policy gradient methods in reinforcement learning are algorithms used to optimize the policy of an agent by directly adjusting its parameters, typically through gradient ascent, to maximize the expected cumulative reward. In the future I would like to further test this method on a more complex example.
 
 
 
